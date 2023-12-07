@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## DESAFIO 02 - Imersão Full Cycle - Aplicação Nest.js com Docker
 
-## Getting Started
+Neste desafio, você deve criar uma aplicação Nest.js com Docker que rode na porta 3000.
 
-First, run the development server:
+Esta aplicação precisa expor 2 rotas de API Rest:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<p>• Listar assets - POST /api/assets </p>
+<p>• Criar assets - GET /api/assets </p>
+<p>• Criar orders - POST /api/orders </p>
+<p>• Listar orders - GET /api/orders </p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Um asset tem os seguintes dados:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<p>• id (é informado pelo usuário) </p>
+<p>• symbol (símbolo do ativo) </p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Uma order tem os seguintes dados:
 
-## Learn More
+<p>• id automático do banco </p>
+<p>• asset_id (relacionado com Asset) </p>
+<p>• price </p>
+<p>• status (open, pending, closed) (não pode deixar mandar o status no POST) </p>
 
-To learn more about Next.js, take a look at the following resources:
+O ORM a ser usado é o Prisma ORM e o banco de dados precisa ser o Mongo, image: bitnami/mongodb:5.0.17
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Crie o arquivo api.http para fazer as chamadas HTTP. Ao rodar o docker compose up já precisa subir logo de cara o projeto com o Nest.js rodando + o MongoDB.

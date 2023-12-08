@@ -2,27 +2,27 @@ version: '3'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     ports:
-      - 3000:3000
-      - 5555:5555
+      - 3000:3000 # application
+      - 5555:5555 # prisma studio
     volumes:
       - .:/home/node/app
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
-    
-  db:
-    build: ./mongo_replica
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_REPLICA_HOST: db
-      MONGODB_DATABASE: nest
-       
-volumes:
-  mongodb_data:
-    driver: local
+    depends_on:
+      - db
 
-networks:
-  my-network:
-    external: true
+  db:
+    image: bitnami/mongodb:5.0.17
+    volumes:
+      - hiokdev_mongodb_data:/bitnami/mongodb
+    environment:
+      MONGODB_ROOT_PASSWORD: root
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_KEY: 123456
+      MONGODB_DATABASE: nest
+
+volumes:
+  hiokdev_mongodb_data:
+    driver: local

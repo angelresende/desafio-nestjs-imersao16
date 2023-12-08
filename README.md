@@ -31,10 +31,3 @@ Esta aplicação precisa expor 2 rotas de API Rest:
 O ORM a ser usado é o Prisma ORM e o banco de dados precisa ser o Mongo, image: bitnami/mongodb:5.0.17
 
 Crie o arquivo api.http para fazer as chamadas HTTP. Ao rodar o docker compose up já precisa subir logo de cara o projeto com o Nest.js rodando + o MongoDB.
-
-- docker and docker compose instalados
-- clonar este repositório
-
-### Executar
-
-- terminal na raiz do projeto: docker compose up -d

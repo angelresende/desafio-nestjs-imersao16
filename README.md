@@ -1,6 +1,4 @@
-# Desafio Aplicação Nest.js com Docker
-
-> Desafio 2 Imersão  16
+# Desafio 2 Imersão  16
 
 ## Informações do desafio
 
